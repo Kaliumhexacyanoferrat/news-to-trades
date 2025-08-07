@@ -13,13 +13,11 @@ public class NewsAnalyzer
 
     private const string Model = "llama3";
 
-    public async Task<string[]> GetBuySignalsAsync(List<NewsEntry> news)
+    public async Task<string> GetBuySignalsAsync(List<NewsEntry> news)
     {
         var prompt = await GetPromptAsync(news);
 
-        var answer = await QueryAsync(prompt);
-
-        return answer.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        return await QueryAsync(prompt);
     }
 
     private async Task<string> GetPromptAsync(List<NewsEntry> news)
