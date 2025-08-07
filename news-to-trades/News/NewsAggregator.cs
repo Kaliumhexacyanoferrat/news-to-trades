@@ -4,12 +4,12 @@ namespace NewsToTrades.News;
 
 public class NewsAggregator
 {
-    private readonly List<INewsSource> sources = new()
+    private readonly List<INewsSource> _sources = new()
     {
         new RssSource("https://www.n-tv.de/nyticker2/index.rss")
     };
 
-    private readonly List<News> _currentNews = new();
+    private readonly List<NewsEntry> _currentNews = new();
 
     private readonly object _newsLock = new();
 
@@ -22,13 +22,13 @@ public class NewsAggregator
         _lastUpdate = DateTime.UtcNow - _maximumAge;
     }
 
-    public async Task<List<News>> GetCurrent()
+    public async Task<List<NewsEntry>> GetCurrentAsync()
     {
         var now = DateTime.UtcNow;
 
         _currentNews.RemoveAll(n => n.Date < now - _maximumAge);
 
-        await Parallel.ForEachAsync(sources, async (s, _) =>
+        await Parallel.ForEachAsync(_sources, async (s, _) =>
         {
             var news = await s.GetLatestAsync(_lastUpdate);
 

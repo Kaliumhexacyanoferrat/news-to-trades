@@ -3,6 +3,6 @@
 public interface INewsSource
 {
 
-    Task<List<News>> GetLatestAsync(DateTime after);
+    Task<List<NewsEntry>> GetLatestAsync(DateTime after);
 
 }
