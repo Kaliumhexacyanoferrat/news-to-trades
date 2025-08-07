@@ -1,5 +1,7 @@
 ﻿using System.Net.Http.Json;
+using System.Reflection;
 using System.Text;
+using System.Text.Json;
 
 using NewsToTrades.News;
 
@@ -11,15 +13,29 @@ public class NewsAnalyzer
 
     private const string Model = "llama3";
 
-    public async Task<List<string>> GetBuySignalsAsync(List<NewsEntry> news)
+    public async Task<string[]> GetBuySignalsAsync(List<NewsEntry> news)
     {
-        var prompt = new StringBuilder();
+        var prompt = await GetPromptAsync(news);
 
-        var answer = await QueryAsync(prompt.ToString());
+        var answer = await QueryAsync(prompt);
 
-        // todo: parse
+        return answer.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+    }
 
-        return new List<string>();
+    private async Task<string> GetPromptAsync(List<NewsEntry> news)
+    {
+        using var template = Assembly.GetExecutingAssembly().GetManifestResourceStream("NewsToTrades.Analysis.Prompt.txt")
+            ?? throw new InvalidOperationException("Unable to read prompt template");
+
+        using var reader = new StreamReader(template);
+
+        var prompt = new StringBuilder(await reader.ReadToEndAsync());
+
+        var newsJson = JsonSerializer.Serialize(news, new JsonSerializerOptions { WriteIndented = true });
+
+        prompt.Replace("[news]", newsJson);
+
+        return prompt.ToString();
     }
 
     private async Task<string> QueryAsync(string prompt)

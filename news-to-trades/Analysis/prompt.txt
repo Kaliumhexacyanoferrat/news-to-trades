@@ -1,0 +1,7 @@
+Hier ist eine Liste von tagesaktuellen News der letzten halben Stunde im JSON-Format:
+
+[news]
+
+Frage: Basierend auf diesen Nachrichten, für welche Unternehmen mit am Xetra handelbaren Aktien erwartest du ein starkes Kaufinteresse in den nächsten 30 Minuten?
+   
+Antworte mit einer Liste von Aktienkürzeln, kein sonstiger Text. Die Antwort soll nur die Kürzel enthalten, getrennt durch Kommas. Beispiel: AAPL, TSLA, MSFT

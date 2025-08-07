@@ -14,5 +14,10 @@
     <ItemGroup>
         <PackageReference Include="CodeHollow.FeedReader" Version="1.2.6" />
     </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Analysis\prompt.txt" />
+      <EmbeddedResource Include="Analysis\prompt.txt" />
+    </ItemGroup>
     
 </Project>
