@@ -1,7 +1,15 @@
-Hier ist eine Liste von tagesaktuellen News der letzten halben Stunde im JSON-Format:
+Hier ist eine Liste von aktuellen News und Headlines der letzten halben Stunde im JSON-Format:
 
+```json
 [news]
+```
 
-Frage: Basierend auf diesen Nachrichten, für welche Unternehmen mit am Xetra handelbaren Aktien erwartest du ein starkes Kaufinteresse in den nächsten 30 Minuten?
+Frage:
 
-Antworte mit einer Liste von Aktienkürzeln, kein sonstiger Text. Die Antwort soll nur die Kürzel enthalten, getrennt durch Kommas. Beispiel: AAPL, TSLA, MSFT. Antworte mit "n/a", wenn du keine starken Kaufsignale siehst.
+Basierend auf diesen Nachrichten, für welche Unternehmen mit am Xetra handelbaren Aktien erwartest du unmittelbar ein sehr starkes Kaufinteresse in den nächsten 30 Minuten bis zwei Stunden?
+Beachte Einträge nicht, die Analysen, Meinungen oder Zusammenfassungen darstellen. Ignoriere übertriebenes Marketing oder heisse Luft durch die Unternehmen selbst.
+Ignoriere reine Quartalszahlen/Regelmeldungen, sofern sie nicht zu außergewöhnlichen Kursreaktionen führen könnten.
+
+Antworte mit einer Liste von offiziellen Xetra-Aktienkürzeln, für die du sehr starke Kaufsignale siehst - kein Kommentar, keine Erklärungen, keine doppelten Werte.
+Die Antwort soll nur die Kürzel enthalten, getrennt durch Kommas. Beispiel: AAPL, TSLA, MSFT.
+Antworte mit "n/a", wenn du keine sehr starken Kaufsignale siehst.

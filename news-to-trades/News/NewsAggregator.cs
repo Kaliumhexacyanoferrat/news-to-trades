@@ -6,7 +6,13 @@ public class NewsAggregator
 {
     private readonly List<INewsSource> _sources = new()
     {
-        new RssSource("https://www.n-tv.de/nyticker2/index.rss")
+        new RssSource("https://www.n-tv.de/nyticker2/index.rss"),
+        new RssSource("https://www.xetra.com/xetra-de/newsroom/xetra-newsboard/4218!rss"),
+        new RssSource("https://www.finanzen.net/rss/news"),
+        new RssSource("https://www.deraktionaer.de/aktionaer-news.rss"),
+        new RssSource("https://www.welt.de/feeds/section/wirtschaft.rss"),
+        new RssSource("https://newsfeed.zeit.de/wirtschaft/index"),
+        new RssSource("https://www.handelsblatt.com/contentexport/feed/finanzen")
     };
 
     private readonly List<NewsEntry> _currentNews = new();
